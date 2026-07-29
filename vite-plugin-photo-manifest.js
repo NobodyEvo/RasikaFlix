@@ -21,7 +21,7 @@ export default function photoManifestPlugin() {
     name: 'vite-plugin-photo-manifest',
 
     configResolved(config) {
-      photosDir = resolve(config.root, 'assets/photos');
+      photosDir = resolve(config.root, 'public/assets/photos');
       base = config.base || '/';
     },
 
@@ -60,7 +60,7 @@ export default function photoManifestPlugin() {
     },
 
     handleHotUpdate({ file, server }) {
-      if (file.includes('assets/photos')) {
+      if (file.includes('public/assets/photos')) {
         const mod = server.moduleGraph.getModuleById(RESOLVED_VIRTUAL_MODULE_ID);
         if (mod) server.moduleGraph.invalidateModule(mod);
         server.hot.send({ type: 'full-reload' });
