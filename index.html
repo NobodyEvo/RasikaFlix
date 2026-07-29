@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RasikaFlix — A Netflix-inspired birthday website for the most beautiful girl in the world ❤️" />
+  <meta name="theme-color" content="#141414" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RasikaFlix ❤️" />
+  <meta property="og:description" content="Your personal Netflix. Made with love." />
+  <meta property="og:type" content="website" />
+
+  <title>RasikaFlix ❤️</title>
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/intro.css" />
+  <link rel="stylesheet" href="/src/styles/navbar.css" />
+  <link rel="stylesheet" href="/src/styles/hero.css" />
+  <link rel="stylesheet" href="/src/styles/rows.css" />
+  <link rel="stylesheet" href="/src/styles/card.css" />
+  <link rel="stylesheet" href="/src/styles/modal.css" />
+  <link rel="stylesheet" href="/src/styles/rituals.css" />
+  <link rel="stylesheet" href="/src/styles/timeline.css" />
+  <link rel="stylesheet" href="/src/styles/responsive.css" />
+
+  <!-- Favicon (using emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>" />
+</head>
+<body>
+
+  <!-- Netflix Intro Screen -->
+  <div id="intro-screen">
+    <div id="intro-logo">
+      <span class="intro-n">N</span>
+    </div>
+  </div>
+
+  <!-- Birthday Modal -->
+  <div id="birthday-modal" class="hidden">
+    <div class="birthday-modal-backdrop"></div>
+    <div class="birthday-modal-content">
+      <canvas id="confetti-canvas"></canvas>
+      <div class="birthday-modal-inner">
+        <div class="birthday-crown">👑</div>
+        <h1 class="birthday-title">Happy Birthday<br/><span class="bachha-name">Rasika</span> ❤️</h1>
+        <p class="birthday-subtitle">Welcome to your own Netflix.<br/>Every film stars you. Obviously.</p>
+        <button id="birthday-enter-btn" class="birthday-btn">
+          <span>▶ Enter RasikaFlix</span>
+        </button>
+        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7; color: #a3a3a3;">Made with love by your bf Sahil</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" class="hidden">
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar-left">
+        <a class="navbar-logo" href="#">
+          <span class="logo-text">RASIKAFLIX</span>
+        </a>
+        <ul class="navbar-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#rituals" class="nav-link">Daily Rituals</a></li>
+          <li><a href="#timeline" class="nav-link">Our Story</a></li>
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <span class="navbar-love">❤️ Made with love by your bf Sahil</span>
+      </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section id="hero-banner">
+      <div id="hero-image-container">
+        <!-- Slideshow layers injected by hero.js -->
+      </div>
+      <div class="hero-content">
+        <h1 id="hero-title" class="hero-title"></h1>
+        <p id="hero-subtitle" class="hero-subtitle"></p>
+        <div class="hero-actions">
+          <button class="hero-btn hero-btn-play" id="hero-play-btn">
+            <span class="btn-icon">▶</span> Watch Now
+          </button>
+          <button class="hero-btn hero-btn-info" id="hero-info-btn">
+            <span class="btn-icon">⬇</span> Scroll Down
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Rows -->
+    <main id="content-rows">
+      <!-- Rows injected by JS -->
+    </main>
+
+    <!-- Daily Rituals Section -->
+    <section id="rituals" class="section-rituals">
+      <div class="section-header">
+        <h2 class="section-title">🫂 Daily Rituals</h2>
+        <p class="section-subtitle">Interactive. Just for you.</p>
+      </div>
+      <div id="rituals-grid">
+        <!-- Ritual cards injected by JS -->
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section-timeline">
+      <div class="section-header">
+        <h2 class="section-title">🎬 Our Story</h2>
+        <p class="section-subtitle">The greatest series ever made.</p>
+      </div>
+      <div id="timeline-container">
+        <!-- Timeline items injected by JS -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p class="footer-logo">RASIKAFLIX</p>
+      <p class="footer-tagline">Every frame is a favourite ❤️</p>
+      <p class="footer-copy">Made with love, forever. Happy Birthday Rasika 🎂</p>
+    </footer>
+  </div>
+
+  <!-- Details Modal -->
+  <div id="details-modal" class="modal hidden">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-container">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-image-wrap">
+        <img id="modal-img" src="" alt="" />
+        <video id="modal-video" controls playsinline style="display:none"></video>
+        <div class="modal-image-gradient"></div>
+      </div>
+      <div class="modal-info">
+        <div class="modal-badges">
+          <span class="modal-badge-new">RasikaFlix</span>
+          <span class="modal-badge-rating">❤️ 100%</span>
+        </div>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <p id="modal-caption" class="modal-caption"></p>
+        <p id="modal-category" class="modal-category"></p>
+        <div class="modal-actions">
+          <button class="modal-btn modal-btn-play" id="modal-play-btn">▶ Watch Again</button>
+          <button class="modal-btn modal-btn-heart" id="modal-heart-btn">❤️ Add to Watchlist</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="text-align: center; padding: 3rem 1rem 1.5rem; color: #a3a3a3; font-size: 0.9rem;">
+    <p>❤️ Made with love by your bf Sahil</p>
+  </footer>
+
+  <!-- Main JS -->
+  <audio id="bg-music" src="audio/bgm.mpeg" preload="auto"></audio>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

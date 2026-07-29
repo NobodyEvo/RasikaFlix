@@ -1,0 +1,241 @@
+/* ============================================
+   responsive.css — Mobile / Tablet Overrides
+   ============================================ */
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  :root {
+    --card-width:  150px;
+    --card-height: 225px;
+  }
+
+  .section-header,
+  .row-header,
+  .row-track,
+  #rituals-grid,
+  #timeline-container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+
+  .hero-content {
+    padding: 0 var(--space-8) var(--space-20);
+    max-width: 520px;
+  }
+
+  #navbar {
+    padding: 0 var(--space-8);
+  }
+
+  #timeline-container::before {
+    left: 16px;
+    transform: none;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    padding-left: var(--space-12);
+    padding-right: 0;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: 9px;
+    right: auto;
+  }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  :root {
+    --card-width:        130px;
+    --card-height:       195px;
+    --card-hover-scale:  1.18;
+    --navbar-height:     60px;
+  }
+
+  /* Navbar mobile */
+  #navbar {
+    padding: 0 var(--space-4);
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-love {
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .logo-text {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Hero mobile */
+  #hero-banner {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .hero-content {
+    padding: 0 var(--space-4) var(--space-16);
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-sm);
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    gap: var(--space-2);
+  }
+
+  .hero-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+
+  .hero-gradient {
+    background:
+      linear-gradient(to top, rgba(20,20,20,1) 0%, rgba(20,20,20,0.5) 30%, rgba(0,0,0,0.1) 60%, transparent 100%),
+      linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%);
+  }
+
+  /* Rows mobile */
+  .section-header,
+  .row-header {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .row-track {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .row-title {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Arrow buttons — always visible on mobile (no hover) */
+  .row-arrow {
+    opacity: 0.7;
+    width: 32px;
+    height: 60px;
+  }
+
+  /* Rituals mobile */
+  #rituals-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  /* Timeline mobile */
+  #timeline-container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  /* Section headers */
+  .section-header {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Modal mobile */
+  .modal {
+    padding: var(--space-3);
+  }
+
+  .modal-container {
+    border-radius: var(--radius-xl);
+  }
+
+  .modal-image-wrap {
+    max-height: 300px;
+  }
+
+  #modal-img {
+    max-height: 300px;
+  }
+
+  .modal-info {
+    padding: var(--space-4) var(--space-5) var(--space-6);
+  }
+
+  .modal-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  /* Birthday modal */
+  .birthday-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .birthday-btn {
+    padding: var(--space-3) var(--space-8);
+    font-size: var(--font-size-md);
+  }
+}
+
+/* ── Small mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  :root {
+    --card-width:  110px;
+    --card-height: 165px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #rituals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Touch device optimisations ── */
+@media (hover: none) {
+  /* Disable complex hover transforms on touch to avoid stuck states */
+  .netflix-card:active .card-inner {
+    transform: scale(1.15);
+  }
+
+  .row-arrow {
+    opacity: 1;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #intro-screen {
+    display: none !important;
+  }
+}

@@ -1,0 +1,112 @@
+/* ============================================
+   rows.css — Horizontal Content Rows
+   (adjusted for taller portrait cards)
+   ============================================ */
+
+#content-rows {
+  padding-top: var(--space-6);
+}
+
+.content-row {
+  margin-bottom: var(--space-10);
+  position: relative;
+}
+
+.row-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: 0 var(--space-12);
+  margin-bottom: var(--space-4);
+  cursor: pointer;
+}
+
+.row-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-light);
+  transition: color var(--transition-fast);
+}
+
+.row-title:hover { color: var(--text-white); }
+
+.row-explore {
+  font-size: var(--font-size-sm);
+  color: var(--color-bachha-rose);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.row-header:hover .row-explore {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Scrollable Track ── */
+.row-track-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.row-track {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  overflow-y: visible;
+  /* extra vertical room for hover-scale */
+  padding: 40px var(--space-12);
+  margin-top: -40px;
+  margin-bottom: -40px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.row-track::-webkit-scrollbar { display: none; }
+
+/* Edge fades */
+.row-track-wrapper::before,
+.row-track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 60px;
+  z-index: 20;
+  pointer-events: none;
+}
+.row-track-wrapper::before { left: 0;  background: var(--gradient-row-left);  }
+.row-track-wrapper::after  { right: 0; background: var(--gradient-row-right); }
+
+/* ── Scroll Arrows ── */
+.row-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 100px;
+  background: rgba(20,20,20,0.75);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  color: var(--text-white);
+  font-size: var(--font-size-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  opacity: 0;
+  transition: all var(--transition-normal);
+}
+
+.row-arrow-left  { left:  4px; }
+.row-arrow-right { right: 4px; }
+
+.content-row:hover .row-arrow { opacity: 1; }
+
+.row-arrow:hover {
+  background: rgba(50,50,50,0.95);
+  transform: translateY(-50%) scale(1.04);
+}

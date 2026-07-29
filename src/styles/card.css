@@ -1,0 +1,217 @@
+/* ============================================
+   card.css — Netflix Card Styles (Portrait)
+   ============================================ */
+
+/* ── Base Card ── */
+.netflix-card {
+  position: relative;
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+  height: var(--card-height);
+  border-radius: var(--radius-lg);
+  overflow: visible;
+  cursor: pointer;
+  transition: transform var(--transition-card);
+  z-index: var(--z-card);
+}
+
+.netflix-card:hover {
+  z-index: var(--z-card-hover);
+}
+
+/* ── Card Inner ── */
+.card-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition-card),
+    box-shadow var(--transition-card),
+    border-radius var(--transition-card);
+}
+
+/* ── Thumbnail ── */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;   /* shows top of frame — good for face shots */
+  display: block;
+  transition: transform var(--transition-card);
+}
+
+/* ── Hover zoom ── */
+.netflix-card:hover .card-inner {
+  transform: scale(var(--card-hover-scale));
+  box-shadow: var(--shadow-card-hover);
+  border-radius: var(--radius-xl);
+}
+
+/* ── Hover Overlay ── */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0) 75%);
+  opacity: 0;
+  transition: opacity var(--transition-card);
+}
+
+.netflix-card:hover .card-overlay {
+  opacity: 1;
+}
+
+/* ── Caption ── */
+.card-caption {
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  right: 0;
+  padding: 0 var(--space-3);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: all var(--transition-card);
+  z-index: 2;
+}
+
+.netflix-card:hover .card-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card-caption-text {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-white);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+}
+
+/* ── Bottom Actions ── */
+.card-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 var(--space-3) var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all var(--transition-card);
+  z-index: 3;
+}
+
+.netflix-card:hover .card-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  background: rgba(0,0,0,0.5);
+  color: var(--text-white);
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+.card-action-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: var(--text-white);
+  transform: scale(1.1);
+}
+
+.card-action-btn.heart {
+  margin-left: auto;
+  border-color: rgba(244,63,94,0.5);
+}
+
+.card-action-btn.heart:hover {
+  background: rgba(244,63,94,0.3);
+  border-color: var(--color-bachha-rose);
+}
+
+/* ── Skeleton loader ── */
+.card-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--bg-card) 0%, var(--bg-card-hover) 50%, var(--bg-card) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-lg);
+  transition: opacity 0.3s ease;
+}
+
+/* ══════════════════════════════════════════
+   Video Card
+══════════════════════════════════════════ */
+
+.card-video-poster {
+  position: absolute;
+  inset: 0;
+  background: #0a0a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-video-play-icon {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-white);
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.netflix-card:hover .card-video-play-icon {
+  transform: scale(1.15);
+  background: rgba(244,63,94,0.4);
+  border-color: var(--color-bachha-rose);
+}
+
+.card-video-badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  background: rgba(244,63,94,0.85);
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+}

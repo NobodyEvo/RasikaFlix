@@ -1,0 +1,123 @@
+/* ============================================
+   navbar.css — Netflix Navigation Bar
+   ============================================ */
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-12);
+  z-index: var(--z-navbar);
+  transition: background var(--transition-slow), backdrop-filter var(--transition-slow);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+}
+
+#navbar.scrolled {
+  background: rgba(20, 20, 20, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+/* ── Logo ── */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: var(--font-size-2xl);
+  letter-spacing: 3px;
+  color: var(--color-bachha-rose);
+  text-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+  transition: text-shadow var(--transition-normal);
+}
+
+.logo-text:hover {
+  text-shadow: 0 0 40px rgba(244, 63, 94, 0.8), 0 0 80px rgba(244, 63, 94, 0.4);
+}
+
+/* ── Nav Links ── */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav-link {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color var(--transition-fast);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-bachha-rose);
+  transition: width var(--transition-normal);
+  border-radius: 1px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-white);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ── Right Side ── */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navbar-love {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.navbar-avatar {
+  width: auto;
+  padding: 0 var(--space-3);
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-bachha-rose), var(--color-purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--text-white);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.navbar-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(244,63,94,0.4);
+}
